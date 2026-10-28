@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="color-scheme" content="dark" />
+<title>Ular Ilmu — Masa Keemasan Bani Abbasiyah | PAI Kelas 8</title>
+<style>
+  :root{
+    --gold:#f2c15c;
+    --gold-strong:#e0a83c;
+    --gold-soft:rgba(242,193,92,.15);
+    --teal:#28d3ac;
+    --red:#f2705f;
+    --text:#e9f6f1;
+    --muted:#94b1ad;
+    --line:rgba(255,255,255,.09);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    min-height:100vh;
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(900px 520px at 8% -8%, rgba(40,211,172,.17), transparent 62%),
+      radial-gradient(760px 520px at 102% -4%, rgba(242,193,92,.14), transparent 58%),
+      radial-gradient(900px 640px at 50% 118%, rgba(84,110,255,.12), transparent 62%),
+      #041318;
+    display:flex;
+    justify-content:center;
+    padding:clamp(10px,2.2vw,26px);
+    -webkit-tap-highlight-color:transparent;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.5;
+    z-index:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.028) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,.022) 0 1px, transparent 1px 24px);
+    -webkit-mask-image:radial-gradient(circle at 50% 20%, #000, transparent 78%);
+    mask-image:radial-gradient(circle at 50% 20%, #000, transparent 78%);
+  }
+  .app{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:1080px;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(10px,1.6vw,18px);
+  }
+
+  /* ---------- header ---------- */
+  .topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0}
+  .logo{
+    width:44px;height:44px;flex:0 0 auto;
+    border-radius:14px;
+    display:grid;place-items:center;
+    font-size:22px;
+    background:linear-gradient(145deg, rgba(242,193,92,.26), rgba(40,211,172,.16));
+    border:1px solid rgba(242,193,92,.38);
+    box-shadow:0 10px 26px -10px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.14);
+  }
+  h1.title{
+    margin:0;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(17px,2.1vw,23px);
+    font-weight:700;
+    letter-spacing:.2px;
+    line-height:1.2;
+  }
+  h1.title span{color:var(--gold)}
+  .subtitle{
+    margin:3px 0 0;
+    font-size:10.5px;
+    color:var(--muted);
+    letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  .iconbtn{
+    width:42px;height:42px;flex:0 0 auto;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.055);
+    color:var(--text);
+    font-size:16px;
+    cursor:pointer;
+    display:grid;place-items:center;
+    transition:background .18s, transform .12s, opacity .18s;
+  }
+  .iconbtn:hover{background:rgba(255,255,255,.1)}
+  .iconbtn:active{transform:scale(.95)}
+  .iconbtn:disabled{opacity:.35;cursor:not-allowed}
+  .iconbtn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  /* ---------- hud ---------- */
+  .hud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(6px,1vw,10px)}
+  .stat{
+    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:7px clamp(8px,1.2vw,13px);
+    min-width:0;
+    display:flex;flex-direction:column;gap:1px;
+  }
+  .stat .k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .stat .v{font-size:clamp(14px,1.9vw,18px);font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+  .hearts{display:flex;gap:1px;font-size:clamp(10px,1.4vw,13px);line-height:1.4}
+  .heart{color:var(--red);opacity:.22;transition:opacity .2s}
+  .heart.on{opacity:1;text-shadow:0 0 9px rgba(242,112,95,.7)}
+
+  /* ---------- layout ---------- */
+  .main{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(300px,360px);
+    gap:clamp(12px,2vw,20px);
+    align-items:start;
+  }
+  .main > *{min-width:0}
+  @media (max-width:880px){
+    .main{grid-template-columns:minmax(0,1fr)}
+    .main > .panel{display:contents}
+    .qcard{order:1}
+    .stage{order:2}
+    .padcard{order:3}
+    .foot{order:4}
+  }
+  @media (max-width:560px){
+    .brand{flex:1 1 100%;margin-right:0}
+    .topbar{justify-content:flex-end;gap:8px}
+    .iconbtn{width:38px;height:38px;border-radius:11px;font-size:15px}
+    .logo{width:38px;height:38px;font-size:19px;border-radius:11px}
+    h1.title{font-size:17px}
+    .subtitle{font-size:9.5px;letter-spacing:.1em}
+  }
+
+  /* ---------- board ---------- */
+  .stage{
+    position:relative;
+    width:100%;
+    max-width:min(600px, 74vh);
+    margin-inline:auto;
+    aspect-ratio:1/1;
+    min-width:0;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(242,193,92,.24);
+    background:#061b21;
+    box-shadow:0 26px 60px -24px rgba(0,0,0,.85), inset 0 0 0 1px rgba(255,255,255,.03);
+  }
+  canvas{display:block;width:100%;height:100%;min-width:0;touch-action:none}
+  .toast{
+    position:absolute;
+    left:50%;bottom:13px;
+    transform:translate(-50%,12px);
+    max-width:92%;
+    padding:8px 13px;
+    border-radius:999px;
+    background:rgba(5,22,27,.94);
+    border:1px solid rgba(242,193,92,.28);
+    color:#e8f5f1;
+    font-size:11.5px;
+    text-align:center;
+    line-height:1.4;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .24s, transform .24s;
+    z-index:4;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* ---------- overlay ---------- */
+  .overlay{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    display:grid;
+    place-items:center;
+    padding:clamp(10px,2.4vw,20px);
+    background:rgba(3,15,19,.74);
+    -webkit-backdrop-filter:blur(7px);
+    backdrop-filter:blur(7px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .22s;
+  }
+  .overlay.show{opacity:1;pointer-events:auto}
+  .overlay-card{
+    width:min(100%,390px);
+    max-height:100%;
+    overflow:auto;
+    padding:clamp(16px,3vw,24px);
+    text-align:center;
+    border-radius:20px;
+    border:1px solid rgba(242,193,92,.3);
+    background:linear-gradient(180deg, rgba(14,44,50,.97), rgba(6,24,29,.97));
+    box-shadow:0 30px 70px -24px rgba(0,0,0,.9);
+    scrollbar-width:thin;
+  }
+  .overlay-card h2{
+    margin:6px 0 3px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(19px,3.2vw,25px);
+    letter-spacing:.3px;
+  }
+  .overlay-card .sub{
+    margin:0 0 10px;
+    color:var(--gold);
+    font-size:10.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+  }
+  .overlay-card p{color:#bed6d2;font-size:12.5px;line-height:1.6;margin:8px 0}
+  .ornament{font-size:14px;color:var(--gold);opacity:.85;letter-spacing:6px}
+  .rules{list-style:none;margin:12px 0 14px;padding:0;text-align:left;display:grid;gap:8px}
+  .rules li{display:flex;gap:8px;font-size:12px;line-height:1.5;color:#c9dedb}
+  .rules .dot{
+    flex:0 0 auto;
+    width:7px;height:7px;margin-top:5px;
+    border-radius:50%;
+    box-shadow:0 0 8px rgba(255,255,255,.35);
+  }
+  .rules b{color:var(--gold);font-weight:700}
+  .btn{
+    width:100%;
+    padding:12px 18px;
+    border:0;
+    border-radius:12px;
+    font:inherit;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    transition:transform .12s, box-shadow .2s, background .2s;
+  }
+  .btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .btn.primary{
+    color:#241703;
+    background:linear-gradient(135deg,#f8d98a,#e2a93b);
+    box-shadow:0 12px 26px -10px rgba(242,193,92,.75);
+  }
+  .btn.primary:hover{transform:translateY(-1px);box-shadow:0 16px 30px -10px rgba(242,193,92,.85)}
+  .btn.primary:active{transform:translateY(0) scale(.99)}
+  .btn.ghost{
+    margin-top:8px;
+    color:#d9e9e5;
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--line);
+  }
+  .btn.ghost:hover{background:rgba(255,255,255,.1)}
+  .final-score{
+    margin:8px 0 2px;
+    font-size:clamp(34px,7vw,46px);
+    font-weight:800;
+    line-height:1;
+    color:var(--gold);
+    text-shadow:0 0 26px rgba(242,193,92,.35);
+    font-variant-numeric:tabular-nums;
+  }
+  .final-score small{display:block;margin-top:4px;font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:600;text-transform:uppercase}
+  .final-rows{margin:12px 0 14px;display:grid;gap:5px}
+  .final-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#b9d2ce;padding:6px 2px;border-bottom:1px dashed rgba(255,255,255,.08)}
+  .final-row:last-child{border-bottom:0}
+  .final-row b{color:#eefaf7}
+
+  /* ---------- side panel ---------- */
+  .panel{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .card{
+    padding:14px;
+    border-radius:17px;
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+  }
+  .qhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .pill{
+    display:inline-block;
+    padding:3px 9px;
+    border-radius:999px;
+    font-size:9.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    color:var(--gold);
+    background:var(--gold-soft);
+    border:1px solid rgba(242,193,92,.3);
+  }
+  .pill.alt{color:#9be9d7;background:rgba(40,211,172,.1);border-color:rgba(40,211,172,.28)}
+  .qtext{
+    margin:0 0 11px;
+    font-size:clamp(13px,1.5vw,14.5px);
+    font-weight:600;
+    line-height:1.55;
+    min-height:42px;
+  }
+  .options{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  .option{
+    display:flex;align-items:center;gap:9px;
+    padding:7px 9px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.028);
+    font-size:12px;
+    line-height:1.35;
+    color:#d6e7e3;
+    transition:background .18s, border-color .18s, opacity .18s;
+  }
+  .option .key{
+    flex:0 0 auto;
+    width:23px;height:23px;
+    border-radius:7px;
+    display:grid;place-items:center;
+    font-size:11.5px;font-weight:800;
+    color:#07191d;
+    background:var(--c);
+    box-shadow:0 0 11px -2px var(--c);
+  }
+  .option.is-wrong{
+    opacity:.38;
+    text-decoration:line-through;
+    border-color:rgba(242,112,95,.35);
+    background:rgba(242,112,95,.07);
+  }
+  .option.is-correct{
+    border-color:rgba(40,211,172,.6);
+    background:rgba(40,211,172,.14);
+    color:#eafff9;
+    box-shadow:0 0 0 1px rgba(40,211,172,.16) inset;
+  }
+  .fact{
+    display:none;
+    margin-top:10px;
+    padding-left:9px;
+    border-left:2px solid rgba(242,193,92,.55);
+    font-size:11px;
+    line-height:1.55;
+    color:#a9c7c1;
+  }
+  .fact::before{content:"Info · ";color:rgba(242,193,92,.85);font-weight:700;letter-spacing:.05em}
+  .fact.show{display:block;animation:fadeUp .3s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  .pad{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+    max-width:212px;
+    margin:2px auto 0;
+  }
+  .pad button{
+    height:44px;
+    border-radius:11px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.055);
+    color:#dcebe7;
+    font-size:15px;
+    cursor:pointer;
+    touch-action:none;
+    user-select:none;
+    -webkit-user-select:none;
+    display:grid;place-items:center;
+    transition:background .12s, transform .1s;
+  }
+  .pad button:hover{background:rgba(255,255,255,.1)}
+  .pad button:active{transform:scale(.95);background:rgba(242,193,92,.2)}
+  .pad .up{grid-area:1/2}
+  .pad .left{grid-area:2/1}
+  .pad .mid{grid-area:2/2;color:var(--gold);font-size:13px}
+  .pad .right{grid-area:2/3}
+  .pad .down{grid-area:3/2}
+  .padlabel{
+    text-align:center;
+    font-size:9.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 8px;
+  }
+  .foot{
+    text-align:center;
+    font-size:10.5px;
+    line-height:1.55;
+    color:#7f9c98;
+    padding:0 4px;
+  }
+  .foot kbd{
+    font-family:inherit;
+    font-size:10px;
+    padding:1px 5px;
+    border-radius:5px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.06);
+    color:#c3d8d4;
+  }
+  @media (max-width:880px){
+    .pad{max-width:100%;grid-template-columns:repeat(3,1fr)}
+    .pad button{height:50px}
+    .foot{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001s !important;transition-duration:.001s !important}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🕌</div>
+      <div>
+        <h1 class="title">Ular Ilmu · <span>Bani Abbasiyah</span></h1>
+        <p class="subtitle">PAI Kelas 8 — Masa Keemasan Islam</p>
+      </div>
+    </div>
+    <button class="iconbtn" id="btnSound" type="button" aria-label="Matikan suara" aria-pressed="true" title="Suara">🔊</button>
+    <button class="iconbtn" id="btnPause" type="button" aria-label="Jeda permainan" title="Jeda (P)">❚❚</button>
+  </header>
+
+  <div class="hud">
+    <div class="stat"><span class="k">Skor</span><span class="v" id="hudScore">0</span></div>
+    <div class="stat"><span class="k">Nyawa</span><span class="v hearts" id="hudLives"></span></div>
+    <div class="stat"><span class="k">Benar</span><span class="v" id="hudCorrect">0</span></div>
+    <div class="stat"><span class="k">Level</span><span class="v" id="hudLevel">1</span></div>
+  </div>
+
+  <div class="main">
+    <div class="stage" id="stage">
+      <canvas id="board" width="600" height="600" aria-label="Papan permainan ular ilmu"></canvas>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="overlay" id="overlay" aria-hidden="true">
+        <div class="overlay-card" id="overlayCard"></div>
+      </div>
+    </div>
+
+    <aside class="panel">
+      <div class="card qcard">
+        <div class="qhead">
+          <span class="pill" id="qNum">Soal 1</span>
+          <span class="pill alt" id="qLevel">Level 1</span>
+        </div>
+        <p class="qtext" id="qText">Memuat soal…</p>
+        <ul class="options" id="options"></ul>
+        <div class="fact" id="fact"></div>
+      </div>
+
+      <div class="card padcard">
+        <p class="padlabel">Kontrol</p>
+        <div class="pad">
+          <button type="button" class="up" data-dir="0,-1" aria-label="Atas">▲</button>
+          <button type="button" class="left" data-dir="-1,0" aria-label="Kiri">◀</button>
+          <button type="button" class="mid" id="padPause" aria-label="Jeda atau lanjutkan">❚❚</button>
+          <button type="button" class="right" data-dir="1,0" aria-label="Kanan">▶</button>
+          <button type="button" class="down" data-dir="0,1" aria-label="Bawah">▼</button>
+        </div>
+      </div>
+
+      <p class="foot">
+        Gerak: <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> / <kbd>WASD</kbd> / geser layar ·
+        Jeda: <kbd>P</kbd><br>
+        Materi: Sejarah Peradaban Islam masa Bani Abbasiyah (750–1258 M)
+      </p>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     DATA MATERI — Masa Keemasan Bani Abbasiyah
+     ========================================================= */
+  const QUESTIONS = [
+    {
+      q:"Dinasti Abbasiyah berdiri pada tahun ...",
+      o:["661 M","750 M","1258 M","570 M"],
+      c:1,
+      e:"Bani Abbasiyah berdiri tahun 750 M (132 H) setelah menggulingkan Bani Umayyah."
+    },
+    {
+      q:"Pendiri Dinasti Abbasiyah adalah ...",
+      o:["Muawiyah bin Abi Sufyan","Abu Abbas As-Saffah","Al-Walid bin Abdul Malik","Harun al-Rasyid"],
+      c:1,
+      e:"Abu Abbas As-Saffah adalah khalifah pertama Bani Abbasiyah (750–754 M)."
+    },
+    {
+      q:"Kota yang dibangun Khalifah Al-Mansur sebagai ibu kota Abbasiyah adalah ...",
+      o:["Damaskus","Kufah","Baghdad","Kairo"],
+      c:2,
+      e:"Al-Mansur membangun Baghdad pada tahun 762 M sebagai pusat pemerintahan Abbasiyah."
+    },
+    {
+      q:"Lembaga ilmu sekaligus pusat penerjemahan pada masa Abbasiyah bernama ...",
+      o:["Baitul Mal","Baitul Hikmah","Baitul Maqdis","Baitul Quran"],
+      c:1,
+      e:"Baitul Hikmah (Rumah Kebijaksanaan) menjadi pusat ilmu, perpustakaan, dan penerjemahan."
+    },
+    {
+      q:"Baitul Hikmah mencapai puncak kejayaan pada masa Khalifah ...",
+      o:["Al-Mansur","Al-Musta'shim","Abu Ja'far","Al-Ma'mun"],
+      c:3,
+      e:"Pada masa Al-Ma'mun, Baitul Hikmah berkembang pesat dengan gerakan penerjemahan besar-besaran."
+    },
+    {
+      q:"Ilmuwan Muslim penemu konsep algoritma dan aljabar adalah ...",
+      o:["Al-Farabi","Al-Khwarizmi","Ibnu Sina","Al-Battani"],
+      c:1,
+      e:"Al-Khwarizmi menulis kitab aljabar; namanya menjadi asal kata 'algoritma'."
+    },
+    {
+      q:"Karya Ibnu Sina di bidang kedokteran yang menjadi rujukan di Eropa adalah ...",
+      o:["Ihya Ulumuddin","Al-Muqaddimah","Al-Qanun fi at-Tibb","Ar-Risalah"],
+      c:2,
+      e:"Al-Qanun fi at-Tibb dipakai sebagai buku wajib kedokteran di Eropa selama berabad-abad."
+    },
+    {
+      q:"Julukan \"Guru Kedua\" (Al-Mu'allim ats-Tsani) dalam filsafat Islam diberikan kepada ...",
+      o:["Ibnu Rusyd","Al-Ghazali","Ibnu Khaldun","Al-Farabi"],
+      c:3,
+      e:"Al-Farabi dijuluki Guru Kedua setelah Aristoteles karena kedalaman filsafatnya."
+    },
+    {
+      q:"Ilmuwan Muslim yang dikenal sebagai bapak kimia Islam adalah ...",
+      o:["Ibnu Haitham","Al-Biruni","Jabir bin Hayyan","Al-Battani"],
+      c:2,
+      e:"Jabir bin Hayyan mengembangkan metode eksperimen dalam ilmu kimia."
+    },
+    {
+      q:"Kitab Al-Muqaddimah yang membahas sejarah dan sosiologi ditulis oleh ...",
+      o:["Ibnu Sina","Ibnu Khaldun","Al-Farabi","Ibnu Rusyd"],
+      c:1,
+      e:"Ibnu Khaldun dikenal sebagai peletak dasar ilmu sosiologi dan sejarah."
+    },
+    {
+      q:"Ilmuwan Muslim ahli astronomi yang menyusun kitab Az-Zij adalah ...",
+      o:["Al-Battani","Al-Khwarizmi","Jabir bin Hayyan","Ibnu Sina"],
+      c:0,
+      e:"Al-Battani (Albategnius) terkenal dengan pengamatan astronomi dan kitab Az-Zij."
+    },
+    {
+      q:"Teknologi pembuatan kertas pada masa Abbasiyah diperoleh dari ...",
+      o:["Roma","Cina","Mesir","India"],
+      c:1,
+      e:"Setelah Perang Talas, tawanan dari Cina mengajarkan pembuatan kertas di Samarkand lalu Baghdad."
+    },
+    {
+      q:"Dua ulama penulis kitab hadis terkenal pada masa Abbasiyah adalah ...",
+      o:["Al-Khwarizmi dan Al-Battani","Bukhari dan Muslim","Ibnu Rusyd dan Ibnu Khaldun","Ibnu Sina dan Al-Farabi"],
+      c:1,
+      e:"Imam Bukhari dan Imam Muslim menyusun kitab hadis yang menjadi rujukan utama umat Islam."
+    },
+    {
+      q:"Bani Abbasiyah berakhir akibat serangan bangsa ...",
+      o:["Romawi","Persia","Mongol","Turki Utsmani"],
+      c:2,
+      e:"Pasukan Mongol pimpinan Hulagu Khan menghancurkan Baghdad pada tahun 1258 M."
+    },
+    {
+      q:"Baghdad dihancurkan oleh pasukan Mongol pada tahun ...",
+      o:["750 M","1258 M","1187 M","1453 M"],
+      c:1,
+      e:"Tahun 1258 M menjadi akhir riwayat Dinasti Abbasiyah di Baghdad."
+    },
+    {
+      q:"Julukan Baghdad sebagai \"Kota Perdamaian\" dalam bahasa Arab adalah ...",
+      o:["Madinat an-Nabi","Madinat as-Salam","Madinat al-Quds","Madinat al-Munawwarah"],
+      c:1,
+      e:"Baghdad disebut Madinat as-Salam yang berarti Kota Perdamaian."
+    },
+    {
+      q:"Khalifah Abbasiyah yang terkenal dalam kisah Seribu Satu Malam adalah ...",
+      o:["Abu Abbas As-Saffah","Al-Musta'shim","Al-Mansur","Harun al-Rasyid"],
+      c:3,
+      e:"Masa Harun al-Rasyid dikenal makmur dan menjadi latar kisah Seribu Satu Malam."
+    },
+    {
+      q:"Rumah sakit pada masa Dinasti Abbasiyah disebut ...",
+      o:["Madrasah","Dewan","Baitul Hikmah","Bimaristan"],
+      c:3,
+      e:"Bimaristan adalah rumah sakit tempat pasien dirawat dan diobati."
+    },
+    {
+      q:"Filsuf Muslim Ibnu Rusyd berasal dari wilayah ...",
+      o:["Baghdad","Andalusia","Persia","Mesir"],
+      c:1,
+      e:"Ibnu Rusyd (Averroes) lahir di Cordoba, Andalusia, dan menafsirkan karya Aristoteles."
+    },
+    {
+      q:"Tokoh Muslim yang dikenal sebagai bapak ilmu optik adalah ...",
+      o:["Ibnu Haitham","Al-Khwarizmi","Jabir bin Hayyan","Al-Farabi"],
+      c:0,
+      e:"Ibnu Haitham (Alhazen) menulis Kitab al-Manazir tentang teori cahaya dan penglihatan."
+    },
+    {
+      q:"Baitul Hikmah banyak menerjemahkan karya dari peradaban ...",
+      o:["Yunani, Persia, dan India","Hanya Romawi","Hanya Cina","Hanya Mesir"],
+      c:0,
+      e:"Karya Yunani, Persia, dan India diterjemahkan lalu dikembangkan ilmuwan Muslim."
+    }
+  ];
+
+  /* =========================================================
+     KONSTANTA & STATE
+     ========================================================= */
+  const COLS = 24, ROWS = 24, SIZE = 600, CELL = SIZE / COLS;
+  const MAX_LIVES = 5;
+  const LETTERS = ["A","B","C","D"];
+  const COLORS = ["#f2b544","#4fd1c5","#8b9dff","#ff8fa3"];
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  const canvas = document.getElementById("board");
+  const ctx = canvas.getContext("2d");
+  canvas.width = Math.round(SIZE * DPR);
+  canvas.height = Math.round(SIZE * DPR);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+  const el = {
+    score: document.getElementById("hudScore"),
+    lives: document.getElementById("hudLives"),
+    correct: document.getElementById("hudCorrect"),
+    level: document.getElementById("hudLevel"),
+    qtext: document.getElementById("qText"),
+    qnum: document.getElementById("qNum"),
+    qlevel: document.getElementById("qLevel"),
+    options: document.getElementById("options"),
+    fact: document.getElementById("fact"),
+    overlay: document.getElementById("overlay"),
+    card: document.getElementById("overlayCard"),
+    toast: document.getElementById("toast"),
+    btnPause: document.getElementById("btnPause"),
+    btnSound: document.getElementById("btnSound"),
+    padPause: document.getElementById("padPause")
+  };
+
+  let state = "start";          // start | playing | paused | over
+  let snake = [];
+  let dir = { x: 1, y: 0 };
+  let queue = [];
+  let tokens = [];
+  let pendingGrowth = 0;
+
+  let currentQ = null;
+  let qOrder = [];
+  let qPos = 0;
+  let qNo = 0;
+  let wrongPicks = new Set();
+
+  let lives = MAX_LIVES;
+  let score = 0;
+  let correctCount = 0;
+  let wrongCount = 0;
+  let streak = 0;
+  let level = 1;
+
+  let best = 0;
+  try { best = parseInt(localStorage.getItem("ularIlmuBest") || "0", 10) || 0; } catch (err) { best = 0; }
+
+  let freezeUntil = 0;
+  let shakeUntil = 0;
+  let flash = null;
+  let particles = [];
+  let floaters = [];
+
+  let acc = 0;
+  let lastT = performance.now();
+  let lastFrame = performance.now();
+
+  let toastTimer = null;
+  let soundOn = true;
+  let audioCtx = null;
+  let boardTex = null;
+  let vignette = null;
+
+  /* =========================================================
+     UTILITAS
+     ========================================================= */
+  function range(n){
+    const out = [];
+    for (let i = 0; i < n; i++) out.push(i);
+    return out;
+  }
+  function shuffle(a){
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+  function withAlpha(hex, a){
+    const n = parseInt(hex.slice(1), 16);
+    return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+  }
+  function cellKey(x, y){ return x + "," + y; }
+
+  /* =========================================================
+     AUDIO (WebAudio sederhana, tanpa file eksternal)
+     ========================================================= */
+  function ensureAudio(){
+    if (!audioCtx){
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC){ try { audioCtx = new AC(); } catch (err) { audioCtx = null; } }
+    }
+    if (audioCtx && audioCtx.state === "suspended"){ audioCtx.resume(); }
+  }
+  function tone(freq, dur, type, vol, slideTo){
+    if (!soundOn || !audioCtx) return;
+    const t0 = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type || "sine";
+    osc.frequency.setValueAtTime(freq, t0);
+    if (slideTo) osc.frequency.exponentialRampToValueAtTime(slideTo, t0 + dur);
+    gain.gain.setValueAtTime(0.0001, t0);
+    gain.gain.exponentialRampToValueAtTime(vol || 0.05, t0 + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start(t0);
+    osc.stop(t0 + dur + 0.03);
+  }
+  function sfx(kind){
+    if (!soundOn) return;
+    ensureAudio();
+    if (kind === "correct"){
+      tone(660, 0.10, "triangle", 0.06);
+      setTimeout(function(){ tone(880, 0.14, "triangle", 0.055); }, 90);
+      setTimeout(function(){ tone(1180, 0.18, "triangle", 0.05); }, 190);
+    } else if (kind === "wrong"){
+      tone(190, 0.24, "sawtooth", 0.05, 90);
+    } else if (kind === "over"){
+      tone(320, 0.28, "sine", 0.06, 140);
+      setTimeout(function(){ tone(170, 0.5, "sine", 0.05, 70); }, 270);
+    } else if (kind === "start"){
+      tone(520, 0.12, "sine", 0.05);
+      setTimeout(function(){ tone(780, 0.16, "sine", 0.045); }, 120);
+    } else {
+      tone(430, 0.06, "sine", 0.035);
+    }
+  }
+
+  /* =========================================================
+     HUD
+     ========================================================= */
+  function updateHUD(){
+    el.score.textContent = score.toLocaleString("id-ID");
+    el.correct.textContent = correctCount;
+    el.level.textContent = level;
+    el.qlevel.textContent = "Level " + level;
+    el.lives.innerHTML = "";
+    for (let i = 0; i < MAX_LIVES; i++){
+      const s = document.createElement("span");
+      s.className = "heart" + (i < lives ? " on" : "");
+      s.textContent = "♥";
+      el.lives.appendChild(s);
+    }
+  }
+
+  /* =========================================================
+     SOAL & PILIHAN
+     ========================================================= */
+  function placeTokens(){
+    const head = snake[0];
+    const used = new Set();
+    snake.forEach(function(s){ used.add(cellKey(s.x, s.y)); });
+
+    const all = [];
+    for (let y = 1; y < ROWS - 1; y++){
+      for (let x = 1; x < COLS - 1; x++){
+        if (used.has(cellKey(x, y))) continue;
+        all.push({ x: x, y: y });
+      }
+    }
+    shuffle(all);
+
+    const chosen = [];
+    // Tahap 1: jauh dari kepala dan dari token lain
+    for (let i = 0; i < all.length && chosen.length < 4; i++){
+      const c = all[i];
+      if (Math.abs(c.x - head.x) + Math.abs(c.y - head.y) < 4) continue;
+      let ok = true;
+      for (let j = 0; j < chosen.length; j++){
+        if (Math.abs(chosen[j].x - c.x) + Math.abs(chosen[j].y - c.y) < 4){ ok = false; break; }
+      }
+      if (ok) chosen.push(c);
+    }
+    // Tahap 2: longgarkan jarak antartoken
+    for (let i = 0; i < all.length && chosen.length < 4; i++){
+      const c = all[i];
+      if (chosen.indexOf(c) !== -1) continue;
+      if (Math.abs(c.x - head.x) + Math.abs(c.y - head.y) < 3) continue;
+      chosen.push(c);
+    }
+    // Tahap 3: sisa sel bebas
+    for (let i = 0; i < all.length && chosen.length < 4; i++){
+      const c = all[i];
+      if (chosen.indexOf(c) !== -1) continue;
+      chosen.push(c);
+    }
+
+    tokens = chosen.map(function(c, i){
+      return { x: c.x, y: c.y, opt: i, born: performance.now() };
+    });
+  }
+
+  function nextQuestion(){
+    if (!qOrder.length) qOrder = shuffle(range(QUESTIONS.length));
+    if (qPos >= qOrder.length){ qOrder = shuffle(range(QUESTIONS.length)); qPos = 0; }
+
+    currentQ = QUESTIONS[qOrder[qPos++]];
+    qNo++;
+    wrongPicks = new Set();
+    tokens = [];
+    placeTokens();
+
+    el.qtext.textContent = currentQ.q;
+    el.qnum.textContent = "Soal " + qNo;
+    renderOptions();
+    updateHUD();
+  }
+
+  function renderOptions(){
+    el.options.innerHTML = "";
+    if (!currentQ) return;
+    currentQ.o.forEach(function(text, i){
+      const li = document.createElement("li");
+      li.className = "option";
+      li.dataset.opt = String(i);
+      li.style.setProperty("--c", COLORS[i]);
+
+      const key = document.createElement("span");
+      key.className = "key";
+      key.textContent = LETTERS[i];
+
+      const txt = document.createElement("span");
+      txt.className = "txt";
+      txt.textContent = text;
+
+      li.appendChild(key);
+      li.appendChild(txt);
+      el.options.appendChild(li);
+    });
+    wrongPicks.forEach(function(i){ markOption(i, "is-wrong"); });
+  }
+
+  function markOption(i, cls){
+    const node = el.options.querySelector('[data-opt="' + i + '"]');
+    if (node) node.classList.add(cls);
+  }
+
+  /* =========================================================
+     PENGATURAN PERMAINAN
+     ========================================================= */
+  function stepInterval(){
+    return Math.max(78, 170 - (level - 1) * 12);
+  }
+
+  function resetGame(){
+    snake = [{ x: 10, y: 12 }, { x: 9, y: 12 }, { x: 8, y: 12 }];
+    dir = { x: 1, y: 0 };
+    queue = [];
+    pendingGrowth = 0;
+    tokens = [];
+    particles = [];
+    floaters = [];
+    wrongPicks = new Set();
+    lives = MAX_LIVES;
+    score = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    streak = 0;
+    level = 1;
+    qOrder = shuffle(range(QUESTIONS.length));
+    qPos = 0;
+    qNo = 0;
+    currentQ = null;
+    flash = null;
+    shakeUntil = 0;
+    acc = 0;
+    freezeUntil = performance.now() + 450;
+    el.fact.classList.remove("show");
+    el.fact.textContent = "";
+    nextQuestion();
+    updateHUD();
+  }
+
+  function startGame(){
+    ensureAudio();
+    state = "playing";
+    resetGame();
+    hideOverlay();
+    updatePauseBtn();
+    lastT = performance.now();
+    lastFrame = lastT;
+    acc = 0;
+    sfx("start");
+  }
+
+  function endGame(){
+    state = "over";
+    freezeUntil = Infinity;
+    if (score > best){
+      best = score;
+      try { localStorage.setItem("ularIlmuBest", String(best)); } catch (err) {}
+    }
+    updatePauseBtn();
+    sfx("over");
+    showOverlay("over");
+  }
+
+  function togglePause(){
+    if (state === "playing"){
+      state = "paused";
+      showOverlay("pause");
+    } else if (state === "paused"){
+      state = "playing";
+      hideOverlay();
+      lastT = performance.now();
+      acc = 0;
+      sfx("ui");
+    }
+    updatePauseBtn();
+  }
+
+  function updatePauseBtn(){
+    const active = state === "playing" || state === "paused";
+    el.btnPause.disabled = !active;
+    el.padPause.disabled = !active;
+    const icon = state === "paused" ? "▶" : "❚❚";
+    el.btnPause.textContent = icon;
+    el.padPause.textContent = icon;
+    el.btnPause.setAttribute("aria-label", state === "paused" ? "Lanjutkan permainan" : "Jeda permainan");
+  }
+
+  /* =========================================================
+     MEKANIKA ULAR
+     ========================================================= */
+  function pushDir(nx, ny){
+    if (state !== "playing") return;
+    const last = queue.length ? queue[queue.length - 1] : dir;
+    if (nx === -last.x && ny === -last.y) return;
+    if (nx === last.x && ny === last.y) return;
+    if (queue.length < 2) queue.push({ x: nx, y: ny });
+  }
+
+  function step(){
+    if (queue.length){
+      const nd = queue.shift();
+      if (nd.x !== -dir.x || nd.y !== -dir.y) dir = nd;
+    }
+
+    const head = {
+      x: (snake[0].x + dir.x + COLS) % COLS,
+      y: (snake[0].y + dir.y + ROWS) % ROWS
+    };
+
+    const growing = pendingGrowth > 0;
+    const body = growing ? snake : snake.slice(0, -1);
+    for (let i = 0; i < body.length; i++){
+      if (body[i].x === head.x && body[i].y === head.y){ crashSelf(); return; }
+    }
+
+    snake.unshift(head);
+    if (growing) pendingGrowth--;
+    else snake.pop();
+
+    for (let i = 0; i < tokens.length; i++){
+      const tok = tokens[i];
+      if (tok.x === head.x && tok.y === head.y){
+        if (tok.opt === currentQ.c) onCorrect(tok);
+        else onWrong(tok, i);
+        break;
+      }
+    }
+  }
+
+  function onCorrect(tok){
+    correctCount++;
+    streak++;
+    const gain = 100 + (level - 1) * 20 + Math.min(streak, 5) * 10;
+    score += gain;
+    pendingGrowth += 2;
+
+    const newLevel = 1 + Math.floor(correctCount / 4);
+    const levelUp = newLevel > level;
+    level = newLevel;
+
+    freezeUntil = performance.now() + 950;
+    flash = { color: "rgba(40,211,172,.22)", until: freezeUntil };
+    burst(tok, "#3ce6bb");
+    floaters.push({
+      x: (tok.x + 0.5) * CELL,
+      y: (tok.y + 0.5) * CELL,
+      text: "+" + gain,
+      life: 900, max: 900, color: "#9df7e2"
+    });
+
+    tokens = [];
+    markOption(currentQ.c, "is-correct");
+    el.fact.textContent = currentQ.e;
+    el.fact.classList.add("show");
+    updateHUD();
+    sfx("correct");
+    if (levelUp) showToast("Level naik! Ular makin cepat 🐍");
+
+    setTimeout(function(){
+      if (state !== "over") nextQuestion();
+    }, 900);
+  }
+
+  function onWrong(tok, idx){
+    lives--;
+    streak = 0;
+    wrongCount++;
+    wrongPicks.add(tok.opt);
+    tokens.splice(idx, 1);
+    shakeUntil = performance.now() + 380;
+    flash = { color: "rgba(242,112,95,.22)", until: performance.now() + 400 };
+    burst(tok, "#ff8574");
+    markOption(tok.opt, "is-wrong");
+    updateHUD();
+    sfx("wrong");
+
+    if (lives <= 0){ endGame(); return; }
+    showToast("Kurang tepat. Cari jawaban lain!");
+  }
+
+  function crashSelf(){
+    lives--;
+    streak = 0;
+    shakeUntil = performance.now() + 400;
+    flash = { color: "rgba(242,112,95,.2)", until: performance.now() + 400 };
+    burst(snake[0], "#ff8574");
+    updateHUD();
+    sfx("wrong");
+
+    if (lives <= 0){ endGame(); return; }
+    respawn();
+    showToast("Aduh, menabrak! Hati-hati ya.");
+  }
+
+  function respawn(){
+    snake = [{ x: 12, y: 12 }, { x: 11, y: 12 }, { x: 10, y: 12 }];
+    dir = { x: 1, y: 0 };
+    queue = [];
+    pendingGrowth = 0;
+    freezeUntil = performance.now() + 900;
+
+    tokens.forEach(function(t){
+      const hit = snake.some(function(s){ return s.x === t.x && s.y === t.y; });
+      if (hit){
+        const free = findFreeCell();
+        if (free){ t.x = free.x; t.y = free.y; t.born = performance.now(); }
+      }
+    });
+  }
+
+  function findFreeCell(){
+    const occ = new Set();
+    snake.forEach(function(s){ occ.add(cellKey(s.x, s.y)); });
+    tokens.forEach(function(t){ occ.add(cellKey(t.x, t.y)); });
+    const cells = [];
+    for (let y = 0; y < ROWS; y++){
+      for (let x = 0; x < COLS; x++){
+        if (!occ.has(cellKey(x, y))) cells.push({ x: x, y: y });
+      }
+    }
+    if (!cells.length) return null;
+    return cells[Math.floor(Math.random() * cells.length)];
+  }
+
+  /* =========================================================
+     EFEK VISUAL
+     ========================================================= */
+  function burst(tok, color){
+    const cx = (tok.x + 0.5) * CELL;
+    const cy = (tok.y + 0.5) * CELL;
+    for (let i = 0; i < 18; i++){
+      const a = Math.random() * Math.PI * 2;
+      const sp = 0.05 + Math.random() * 0.2;
+      particles.push({
+        x: cx, y: cy,
+        vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+        life: 520, max: 520, color: color,
+        r: 1.4 + Math.random() * 2.6
+      });
+    }
+  }
+
+  function updateEffects(dt){
+    for (let i = 0; i < particles.length; i++){
+      const p = particles[i];
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.vy += 0.00018 * dt;
+      p.life -= dt;
+    }
+    particles = particles.filter(function(p){ return p.life > 0; });
+
+    for (let i = 0; i < floaters.length; i++){
+      const f = floaters[i];
+      f.y -= 0.028 * dt;
+      f.life -= dt;
+    }
+    floaters = floaters.filter(function(f){ return f.life > 0; });
+
+    if (flash && performance.now() > flash.until) flash = null;
+  }
+
+  function buildBoardTexture(){
+    const c = document.createElement("canvas");
+    c.width = Math.round(SIZE * DPR);
+    c.height = Math.round(SIZE * DPR);
+    const g = c.getContext("2d");
+    g.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+    g.fillStyle = "#061b21";
+    g.fillRect(0, 0, SIZE, SIZE);
+
+    const grad = g.createLinearGradient(0, 0, SIZE, SIZE);
+    grad.addColorStop(0, "rgba(40,211,172,.07)");
+    grad.addColorStop(0.5, "rgba(6,27,33,0)");
+    grad.addColorStop(1, "rgba(242,193,92,.08)");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, SIZE, SIZE);
+
+    g.strokeStyle = "rgba(255,255,255,.035)";
+    g.lineWidth = 1;
+    for (let i = 1; i < COLS; i++){
+      g.beginPath(); g.moveTo(i * CELL + 0.5, 0); g.lineTo(i * CELL + 0.5, SIZE); g.stroke();
+      g.beginPath(); g.moveTo(0, i * CELL + 0.5); g.lineTo(SIZE, i * CELL + 0.5); g.stroke();
+    }
+
+    // Ornamen geometris di tengah papan
+    g.save();
+    g.translate(SIZE / 2, SIZE / 2);
+    g.strokeStyle = "rgba(242,193,92,.075)";
+    g.lineWidth = 1.5;
+    [0, Math.PI / 4].forEach(function(rot){
+      g.save();
+      g.rotate(rot);
+      const s = SIZE * 0.22;
+      g.strokeRect(-s / 2, -s / 2, s, s);
+      g.restore();
+    });
+    g.beginPath();
+    g.arc(0, 0, SIZE * 0.30, 0, Math.PI * 2);
+    g.strokeStyle = "rgba(40,211,172,.06)";
+    g.stroke();
+    g.restore();
+
+    // Sudut berhias
+    g.strokeStyle = "rgba(242,193,92,.18)";
+    g.lineWidth = 2;
+    const L = 26, off = 9;
+    const corners = [
+      [off, off, 1, 1],
+      [SIZE - off, off, -1, 1],
+      [off, SIZE - off, 1, -1],
+      [SIZE - off, SIZE - off, -1, -1]
+    ];
+    corners.forEach(function(cn){
+      g.beginPath();
+      g.moveTo(cn[0], cn[1] + cn[3] * L);
+      g.lineTo(cn[0], cn[1]);
+      g.lineTo(cn[0] + cn[2] * L, cn[1]);
+      g.stroke();
+    });
+
+    boardTex = c;
+  }
+
+  function ensureVignette(){
+    if (!vignette){
+      vignette = ctx.createRadialGradient(SIZE / 2, SIZE / 2, SIZE * 0.26, SIZE / 2, SIZE / 2, SIZE * 0.74);
+      vignette.addColorStop(0, "rgba(0,0,0,0)");
+      vignette.addColorStop(1, "rgba(0,0,0,.5)");
+    }
+  }
+
+  function roundRect(x, y, w, h, r){
+    ctx.beginPath();
+    if (ctx.roundRect){ ctx.roundRect(x, y, w, h, r); return; }
+    const rr = Math.min(r, w / 2, h / 2);
+    ctx.moveTo(x + rr, y);
+    ctx.lineTo(x + w - rr, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + rr);
+    ctx.lineTo(x + w, y + h - rr);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - rr, y + h);
+    ctx.lineTo(x + rr, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - rr);
+    ctx.lineTo(x, y + rr);
+    ctx.quadraticCurveTo(x, y, x + rr, y);
+    ctx.closePath();
+  }
+
+  function drawSnake(t){
+    const n = snake.length;
+    for (let i = n - 1; i >= 0; i--){
+      const s = snake[i];
+      const u = i / Math.max(1, n - 1);
+      const pad = i === 0 ? 1.8 : 2.8 + u * 1.2;
+      const x = s.x * CELL + pad;
+      const y = s.y * CELL + pad;
+      const w = CELL - pad * 2;
+      const hue = 44 + (168 - 44) * u;
+      const sat = 88 - 22 * u;
+      const light = 62 - 16 * u;
+
+      ctx.fillStyle = "hsl(" + hue.toFixed(0) + " " + sat.toFixed(0) + "% " + light.toFixed(0) + "%)";
+      if (i === 0){
+        ctx.shadowColor = "rgba(255,214,120,.55)";
+        ctx.shadowBlur = 14;
+      }
+      roundRect(x, y, w, w, Math.min(9, w * 0.34));
+      ctx.fill();
+      if (i === 0) ctx.shadowBlur = 0;
+
+      if (i > 0 && i % 2 === 0){
+        ctx.fillStyle = "rgba(4,22,27,.2)";
+        ctx.beginPath();
+        ctx.arc(x + w / 2, y + w / 2, w * 0.16, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Mata kepala
+    const h = snake[0];
+    const cx = (h.x + 0.5) * CELL;
+    const cy = (h.y + 0.5) * CELL;
+    const fx = dir.x, fy = dir.y;
+    const px = -fy, py = fx;
+    [1, -1].forEach(function(sgn){
+      const ex = cx + fx * 4 + px * 5.2 * sgn;
+      const ey = cy + fy * 4 + py * 5.2 * sgn;
+      ctx.fillStyle = "#03252b";
+      ctx.beginPath(); ctx.arc(ex, ey, 4.1, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath(); ctx.arc(ex, ey, 3.0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#0b1a1d";
+      ctx.beginPath(); ctx.arc(ex + fx * 1.1, ey + fy * 1.1, 1.5, 0, Math.PI * 2); ctx.fill();
+    });
+  }
+
+  function drawTokens(){
+    const now = performance.now();
+    tokens.forEach(function(tok){
+      const age = Math.min(1, Math.max(0, (now - tok.born) / 240));
+      const ease = 1 - Math.pow(1 - age, 3);
+      const cx = (tok.x + 0.5) * CELL;
+      const cy = (tok.y + 0.5) * CELL;
+      const pulse = 1 + Math.sin(now / 320 + tok.opt) * 0.035;
+      const r = Math.max(1, CELL * 0.66 * ease * pulse);
+      const col = COLORS[tok.opt];
+
+      ctx.save();
+      ctx.shadowColor = col;
+      ctx.shadowBlur = 16;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = withAlpha(col, 0.14);
+      ctx.fill();
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = col;
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.fillStyle = col;
+      ctx.font = "800 " + Math.max(10, CELL * 0.62 * ease) + 'px "Segoe UI", system-ui, sans-serif';
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(LETTERS[tok.opt], cx, cy + 1);
+    });
+  }
+
+  function drawParticles(){
+    for (let i = 0; i < particles.length; i++){
+      const p = particles[i];
+      ctx.globalAlpha = Math.max(0, p.life / p.max);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawFloaters(){
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (let i = 0; i < floaters.length; i++){
+      const f = floaters[i];
+      ctx.globalAlpha = Math.max(0, f.life / f.max);
+      ctx.fillStyle = f.color;
+      ctx.font = '800 16px "Segoe UI", system-ui, sans-serif';
+      ctx.fillText(f.text, f.x, f.y);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function draw(t){
+    ctx.save();
+    if (t < shakeUntil){
+      const p = (shakeUntil - t) / 420;
+      ctx.translate((Math.random() - 0.5) * 8 * p, (Math.random() - 0.5) * 8 * p);
+    }
+
+    ctx.fillStyle = "#04171c";
+    ctx.fillRect(-14, -14, SIZE + 28, SIZE + 28);
+    if (boardTex) ctx.drawImage(boardTex, 0, 0, SIZE, SIZE);
+
+    ensureVignette();
+    ctx.fillStyle = vignette;
+    ctx.fillRect(0, 0, SIZE, SIZE);
+
+    drawTokens();
+    drawSnake(t);
+    drawParticles();
+    drawFloaters();
+
+    if (flash && t < flash.until){
+      ctx.fillStyle = flash.color;
+      ctx.fillRect(0, 0, SIZE, SIZE);
+    }
+    ctx.restore();
+  }
+
+  /* =========================================================
+     LOOP
+     ========================================================= */
+  function frame(t){
+    const dt = Math.min(48, Math.max(0, t - lastFrame));
+    lastFrame = t;
+    lastT = t;
+
+    if (state === "playing"){
+      if (t < freezeUntil){
+        acc = 0;
+      } else {
+        acc += dt;
+        const interval = stepInterval();
+        let guard = 0;
+        while (acc >= interval && guard < 4){
+          acc -= interval;
+          guard++;
+          step();
+          if (state !== "playing" || t < freezeUntil){ acc = 0; break; }
+        }
+      }
+    } else {
+      acc = 0;
+    }
+
+    updateEffects(dt);
+    draw(t);
+    requestAnimationFrame(frame);
+  }
+
+  /* =========================================================
+     OVERLAY
+     ========================================================= */
+  function hideOverlay(){
+    el.overlay.classList.remove("show");
+    el.overlay.setAttribute("aria-hidden", "true");
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  }
+
+  function bindOverlayActions(){
+    el.card.querySelectorAll("[data-act]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        const act = btn.dataset.act;
+        if (act === "start" || act === "restart") startGame();
+        else if (act === "resume") togglePause();
+      });
+    });
+  }
+
+  function showOverlay(kind){
+    el.overlay.classList.add("show");
+    el.overlay.setAttribute("aria-hidden", "false");
+
+    if (kind === "start"){
+      el.card.innerHTML =
+        '<div class="ornament">❖ ❖ ❖</div>' +
+        '<h2>Ular Ilmu</h2>' +
+        '<p class="sub">Masa Keemasan Bani Abbasiyah</p>' +
+        '<p>Jawab soal dengan <b>memakan huruf jawaban yang benar</b> di papan. Ular bertambah panjang setiap memakan jawaban!</p>' +
+        '<ul class="rules">' +
+          '<li><span class="dot" style="background:#f2b544"></span><span>Gerakkan ular dengan <b>tombol panah</b>, <b>WASD</b>, atau <b>geser layar</b>.</span></li>' +
+          '<li><span class="dot" style="background:#4fd1c5"></span><span>Makan huruf <b>jawaban benar</b> untuk mendapat skor dan soal baru.</span></li>' +
+          '<li><span class="dot" style="background:#ff8fa3"></span><span>Jawaban salah atau menabrak tubuh sendiri = <b>1 nyawa</b> berkurang.</span></li>' +
+          '<li><span class="dot" style="background:#f2c15c"></span><span>Papan <b>tembus</b> ke sisi seberang. Jaga <b>streak</b> untuk bonus skor!</span></li>' +
+        '</ul>' +
+        '<button class="btn primary" type="button" data-act="start">Mulai Bermain</button>';
+    } else if (kind === "pause"){
+      el.card.innerHTML =
+        '<div class="ornament">❖</div>' +
+        '<h2>Jeda</h2>' +
+        '<p class="sub">Istirahat sejenak</p>' +
+        '<p>Skor <b>' + score.toLocaleString("id-ID") + '</b> · Jawaban benar <b>' + correctCount + '</b> · Nyawa <b>' + Math.max(0, lives) + '</b></p>' +
+        '<button class="btn primary" type="button" data-act="resume">Lanjutkan</button>' +
+        '<button class="btn ghost" type="button" data-act="restart">Mulai Ulang</button>';
+    } else if (kind === "over"){
+      const answered = correctCount + wrongCount;
+      const acc = answered ? Math.round((correctCount / answered) * 100) : 0;
+      let title = "Ayo Coba Lagi!";
+      if (correctCount >= 12) title = "MasyaAllah, Hebat!";
+      else if (correctCount >= 7) title = "Bagus, Terus Belajar!";
+
+      el.card.innerHTML =
+        '<div class="ornament">❖ ❖ ❖</div>' +
+        '<h2>' + title + '</h2>' +
+        '<p class="sub">Permainan selesai</p>' +
+        '<div class="final-score">' + score.toLocaleString("id-ID") + '<small>Skor akhir</small></div>' +
+        '<div class="final-rows">' +
+          '<div class="final-row"><span>Jawaban benar</span><b>' + correctCount + ' soal</b></div>' +
+          '<div class="final-row"><span>Akurasi</span><b>' + acc + '%</b></div>' +
+          '<div class="final-row"><span>Level tercapai</span><b>' + level + '</b></div>' +
+          '<div class="final-row"><span>Rekor skor</span><b>' + best.toLocaleString("id-ID") + '</b></div>' +
+        '</div>' +
+        '<button class="btn primary" type="button" data-act="restart">Main Lagi</button>';
+    }
+    bindOverlayActions();
+  }
+
+  /* =========================================================
+     TOAST
+     ========================================================= */
+  function showToast(msg){
+    el.toast.textContent = msg;
+    el.toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.toast.classList.remove("show"); }, 2200);
+  }
+
+  /* =========================================================
+     INPUT
+     ========================================================= */
+  const KEYMAP = {
+    arrowup: { x: 0, y: -1 }, w: { x: 0, y: -1 },
+    arrowdown: { x: 0, y: 1 }, s: { x: 0, y: 1 },
+    arrowleft: { x: -1, y: 0 }, a: { x: -1, y: 0 },
+    arrowright: { x: 1, y: 0 }, d: { x: 1, y: 0 }
+  };
+
+  window.addEventListener("keydown", function(e){
+    const key = e.key.toLowerCase();
+    const onButton = e.target && e.target.tagName === "BUTTON";
+
+    if (key.indexOf("arrow") === 0) e.preventDefault();
+    if (key === " " && !onButton) e.preventDefault();
+
+    if (state === "start" || state === "over"){
+      if ((key === "enter" || key === " ") && !onButton) startGame();
+      return;
+    }
+    if (key === "p" || key === "escape"){ togglePause(); return; }
+    if (state === "paused") return;
+
+    const d = KEYMAP[key];
+    if (d){
+      ensureAudio();
+      pushDir(d.x, d.y);
+    }
+  }, { passive: false });
+
+  document.querySelectorAll("[data-dir]").forEach(function(btn){
+    const parts = btn.dataset.dir.split(",");
+    const dx = parseInt(parts[0], 10);
+    const dy = parseInt(parts[1], 10);
+    btn.addEventListener("pointerdown", function(e){
+      e.preventDefault();
+      ensureAudio();
+      pushDir(dx, dy);
+    });
+  });
+
+  el.btnPause.addEventListener("click", function(){ ensureAudio(); togglePause(); });
+  el.padPause.addEventListener("pointerdown", function(e){ e.preventDefault(); ensureAudio(); togglePause(); });
+
+  el.btnSound.addEventListener("click", function(){
+    soundOn = !soundOn;
+    el.btnSound.textContent = soundOn ? "🔊" : "🔇";
+    el.btnSound.setAttribute("aria-label", soundOn ? "Matikan suara" : "Nyalakan suara");
+    el.btnSound.setAttribute("aria-pressed", String(soundOn));
+    if (soundOn){ ensureAudio(); sfx("ui"); }
+  });
+
+  // Geser layar (swipe) di papan
+  let swipe = null;
+  canvas.addEventListener("touchstart", function(e){
+    const t0 = e.changedTouches[0];
+    swipe = { x: t0.clientX, y: t0.clientY };
+    ensureAudio();
+  }, { passive: true });
+  canvas.addEventListener("touchmove", function(e){
+    if (swipe) e.preventDefault();
+  }, { passive: false });
+  canvas.addEventListener("touchend", function(e){
+    if (!swipe) return;
+    const t1 = e.changedTouches[0];
+    const dx = t1.clientX - swipe.x;
+    const dy = t1.clientY - swipe.y;
+    swipe = null;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 22) return;
+    if (Math.abs(dx) > Math.abs(dy)) pushDir(dx > 0 ? 1 : -1, 0);
+    else pushDir(0, dy > 0 ? 1 : -1);
+  }, { passive: true });
+
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden && state === "playing") togglePause();
+  });
+
+  /* =========================================================
+     MULAI
+     ========================================================= */
+  buildBoardTexture();
+  state = "start";
+  resetGame();
+  updatePauseBtn();
+  showOverlay("start");
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
